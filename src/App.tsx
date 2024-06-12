@@ -81,22 +81,21 @@ const activities = [
 ];
 
 function App() {
-  const [time, setTime] = useState<"daily" | "weekly" | "monthly">("weekly");
+  const [time, setTime] = useState<"day" | "week" | "month">("week");
 
   function handleClickWeek() {
-    setTime("weekly");
+    setTime("week");
   }
-  function handleClickDaily() {
-    setTime("daily");
+  function handleClickday() {
+    setTime("day");
   }
-  function handleClickMonthly() {
-    setTime("monthly");
+  function handleClickmonth() {
+    setTime("month");
   }
-  console.log(time);
   return (
     <div className="bg-[#0d1323] flex justify-center h-full md:h-screen">
       <div className="justify-center  text-white  flex flex-col md:flex-row m-auto gap-2 p-7">
-        <div className=" bg-[#1d204b] md:h-[432px] md:w-[210px] flex flex-col items-start h-[127px] w-[200px] m-4 rounded-lg">
+        <div className=" bg-[#1d204b] md:h-[432px]  flex flex-col items-start h-[127px] w-[200px] m-4 rounded-lg">
           <div className="flex md:p-8 bg-[#5746ea] h-[80px] md:h-[352px] md:flex-col  w-[200px] p-4 gap-3 rounded-lg">
             <img
               className="border-4 h-12 w-12  md:h-[79px] md:w-[79px]  rounded-full"
@@ -107,22 +106,31 @@ function App() {
               <div className="md:text-4xl">Jeremy Robson</div>
             </div>
           </div>
-          <div className="text-[13px] text-[#7377b7] flex md:text- m-auto md:m-4 md:flex-col gap-5">
+          <div className="text-[13px] text-[#7377b7] flex m-auto md:m-4 md:flex-col gap-5">
             <button
-              onClick={handleClickDaily}
-              className="hover:text-white cursor-pointer"
+              onClick={handleClickday}
+              className={
+                "hover:text-white cursor-pointer flex items-start" +
+                (time === "day" && "text-white")
+              }
             >
               Daily
             </button>
             <button
               onClick={handleClickWeek}
-              className="hover:text-white cursor-pointer"
+              className={
+                "hover:text-white cursor-pointer flex items-start" +
+                (time === "week" && "text-white")
+              }
             >
               Weekly
             </button>
             <button
-              onClick={handleClickMonthly}
-              className="hover:text-white cursor-pointer"
+              onClick={handleClickmonth}
+              className={
+                "hover:text-white cursor-pointer flex items-start" +
+                (time === "month" && "text-white")
+              }
             >
               Monthly
             </button>
@@ -134,7 +142,7 @@ function App() {
               className={
                 element.color +
                 " " +
-                " flex relative h-[127px] w-[200px] m-4 rounded-lg flex-col overflow-hidden"
+                " flex relative h-[127px]  sm:h-[197px] w-[200px] m-4 rounded-lg flex-col overflow-hidden"
               }
             >
               <img
@@ -142,24 +150,33 @@ function App() {
                 src={element.img}
               ></img>
               <div
-                className="bg-[#1d204b] mt-7 z-10 h-full sm:h-[197px] p-4 rounded-lg w-full flex flex-col justify-center "
+                className="bg-[#1d204b] hover:bg-[#34397b] cursor-pointer md:justify-evenly  mt-7 z-10 h-full  p-4 rounded-lg md:p-3 w-full flex flex-col justify-center "
                 key={index}
               >
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-centerstar ">
                   <h3 className=" text-sm font-semibold">{element.category}</h3>
-                  <div className=" flex flex-row gap-[3px] ">
-                    <div className=" rounded-full h-1 w-1 bg-[#b5b6eb]"> </div>
-                    <div className=" rounded-full h-1 w-1 bg-[#b5b6eb]"> </div>
-                    <div className=" rounded-full h-1 w-1 bg-[#b5b6eb]"> </div>
+                  <div className=" cursor-pointer text-[#b5b6eb] text-4xl leading-[0px] hover:text-white ">
+                    ...
                   </div>
                 </div>
 
-                <div className="flex flex-row justify-between items-center">
-                  <p className=" text-white font-light text-2xl ">
-                    {element.currentWeek}hrs
+                <div className="flex flex-row md:flex-col md:items-start md:gap-2 justify-between items-center">
+                  <p className=" text-white font-light text-2xl  md:text-4xl">
+                    {time === "week"
+                      ? element.currentWeek
+                      : time === "month"
+                      ? element.currentMonth
+                      : element.currentDay}
+                    hrs
                   </p>
                   <p className=" text-[#c5c9f7] text-xs">
-                    Last Week - {element.lastWeek} hrs
+                    Last {time} -{" "}
+                    {time === "week"
+                      ? element.lastWeek
+                      : time === "month"
+                      ? element.lastMonth
+                      : element.lastDay}
+                    hrs
                   </p>
                 </div>
               </div>
