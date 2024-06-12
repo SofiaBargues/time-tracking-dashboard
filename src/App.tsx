@@ -93,24 +93,24 @@ function App() {
     setTime("month");
   }
   return (
-    <div className="bg-[#0d1323] flex justify-center h-full md:h-screen">
-      <div className="justify-center  text-white  flex flex-col md:flex-row m-auto gap-2 p-7">
-        <div className=" bg-[#1d204b] md:h-[432px]  flex flex-col items-start h-[127px] w-[200px] m-4 rounded-lg">
-          <div className="flex md:p-8 bg-[#5746ea] h-[80px] md:h-[352px] md:flex-col  w-[200px] p-4 gap-3 rounded-lg">
+    <div className="bg-[#0d1323] flex justify-center h-full lg:h-screen">
+      <div className="justify-center  text-white  flex flex-col lg:flex-row m-auto gap-2 p-7">
+        <div className=" bg-[#1d204b] lg:h-[432px]  flex flex-col items-start h-[127px] w-[200px] m-4 rounded-lg">
+          <div className="flex lg:p-8 bg-[#5746ea] h-[80px] lg:h-[352px] lg:flex-col  w-[200px] p-4 gap-3 rounded-lg">
             <img
-              className="border-4 h-12 w-12  md:h-[79px] md:w-[79px]  rounded-full"
+              className="border-4 h-12 w-12  lg:h-[79px] lg:w-[79px]  rounded-full"
               src={jeremy}
             ></img>
-            <div className=" md:my-6">
+            <div className=" lg:my-6">
               <div className="text-xs  text-[#a29bf5]">Report for</div>
-              <div className="md:text-4xl">Jeremy Robson</div>
+              <div className="lg:text-4xl">Jeremy Robson</div>
             </div>
           </div>
-          <div className="text-[13px] text-[#7377b7] flex m-auto md:m-4 md:flex-col gap-5">
+          <div className="text-[13px] text-[#7377b7] flex m-auto lg:m-4 lg:flex-col gap-5">
             <button
               onClick={handleClickday}
               className={
-                "hover:text-white cursor-pointer flex items-start" +
+                "hover:text-white cursor-pointer flex items-start " +
                 (time === "day" && "text-white")
               }
             >
@@ -119,7 +119,7 @@ function App() {
             <button
               onClick={handleClickWeek}
               className={
-                "hover:text-white cursor-pointer flex items-start" +
+                "hover:text-white cursor-pointer flex items-start " +
                 (time === "week" && "text-white")
               }
             >
@@ -128,7 +128,7 @@ function App() {
             <button
               onClick={handleClickmonth}
               className={
-                "hover:text-white cursor-pointer flex items-start" +
+                "hover:text-white cursor-pointer flex items-start " +
                 (time === "month" && "text-white")
               }
             >
@@ -136,13 +136,13 @@ function App() {
             </button>
           </div>
         </div>
-        <div className="grid md:grid-cols-3">
+        <div className="grid lg:grid-cols-3">
           {activities.map((element, index) => (
             <div
               className={
                 element.color +
                 " " +
-                " flex relative h-[127px]  sm:h-[197px] w-[200px] m-4 rounded-lg flex-col overflow-hidden"
+                " flex relative h-[127px]  lg:h-[197px] w-[200px] m-4 rounded-lg flex-col overflow-hidden"
               }
             >
               <img
@@ -150,7 +150,7 @@ function App() {
                 src={element.img}
               ></img>
               <div
-                className="bg-[#1d204b] hover:bg-[#34397b] cursor-pointer md:justify-evenly  mt-7 z-10 h-full  p-4 rounded-lg md:p-3 w-full flex flex-col justify-center "
+                className="bg-[#1d204b] hover:bg-[#34397b] cursor-pointer lg:justify-evenly  mt-7 z-10 h-full  p-4 rounded-lg lg:p-3 w-full flex flex-col justify-center "
                 key={index}
               >
                 <div className="flex justify-between items-centerstar ">
@@ -160,8 +160,8 @@ function App() {
                   </div>
                 </div>
 
-                <div className="flex flex-row md:flex-col md:items-start md:gap-2 justify-between items-center">
-                  <p className=" text-white font-light text-2xl  md:text-4xl">
+                <div className="flex flex-row lg:flex-col lg:items-start lg:gap-2 justify-between items-center">
+                  <p className=" text-white font-light text-2xl  lg:text-4xl">
                     {time === "week"
                       ? element.currentWeek
                       : time === "month"
